@@ -44,6 +44,7 @@
             <input type="submit" name="signup" value="Update" class="btn-type-2 block px-7 py-2 cursor-pointer mx-auto text-white hover:text-white font-medium">
         </form>
         <h1>Sang</h1>
+        <h2>Akdksfls</h2>
     </div>
 </div>
 @endsection
