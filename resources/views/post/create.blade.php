@@ -7,12 +7,12 @@
         <form class="register-form bg-white border border-gray-300 p-10 rounded-md border-t-4 " method="POST" action="">
             <div class="mb-4">
                 <label for="title" class="text-sm font-medium mb-1 inline-block">Tiêu đề</label>
-                <textarea name="title" id="title" class="input-form w-full px-3 py-2 border border-gray-300 text-sm" cols="30" rows="1"></textarea>
+                <textarea name="title" id="title" class="input-form w-full px-3 py-2 border border-gray-300 text-sm" cols="30" rows="1">{{ old('title') }}</textarea>
                 <span class="text-sm text-red-600">{{ $errors->first('title') }}</span>
             </div>
             <div class="mb-4">
                 <label for="description" class="text-sm font-medium mb-1 inline-block">Mô tả</label>
-                <textarea name="description" id="description" class="input-form w-full px-3 py-2 border border-gray-300 text-sm" cols="30" rows="2"></textarea>
+                <textarea name="description" id="description" class="input-form w-full px-3 py-2 border border-gray-300 text-sm" cols="30" rows="2">{{ old('description') }}</textarea>
             </div>
             <div class="mb-4">
                 <div class="center">
@@ -26,6 +26,7 @@
                       
                     </div>
                 </div> 
+                <span class="text-sm text-red-600">{{ $errors->first('images') }}</span>
             </div>
             <div class="mb-4">
                 <label for="content" class="text-sm font-medium mb-1 inline-block">Địa chỉ</label>
@@ -54,24 +55,24 @@
               @endforeach
             </div>
             <div class="mb-4">
-                <label for="dientich" class="text-sm font-medium mb-1 inline-block">Diện tích (m2)</label>
-                <input type="number" name="dientich" id="dientich" class="input-form w-full px-3 py-2 border border-gray-300 text-sm">
+                <label for="dientich" class="text-sm font-medium mb-1 inline-block">Diện tích (m²)</label>
+                <input type="number" name="dientich" id="dientich" class="input-form w-full px-3 py-2 border border-gray-300 text-sm" value="{{ old('dientich') }}">
                 <span class="text-sm text-red-600">{{ $errors->first('dientich') }}</span>
             </div>
             <div class="mb-4">
                 <label for="giaphong" class="text-sm font-medium mb-1 inline-block">Giá (VNĐ/Tháng)</label>
-                <input type="number" name="giaphong" id="giaphong" class="input-form w-full px-3 py-2 border border-gray-300 text-sm">
+                <input type="number" name="giaphong" id="giaphong" class="input-form w-full px-3 py-2 border border-gray-300 text-sm" value="{{ old('giaphong') }}">
                 <span class="text-sm text-red-600">{{ $errors->first('giaphong') }}</span>
             </div>
             <div class="mb-4 flex">
                 <div class="a-group mr-10">
                     <label for="giadien" class="text-sm font-medium mb-1 inline-block">Giá điện (VNĐ/Số)</label>
-                    <input type="number" name="giadien" id="giadien" class="input-form w-full px-3 py-2 border border-gray-300 text-sm">
+                    <input type="number" name="giadien" id="giadien" class="input-form w-full px-3 py-2 border border-gray-300 text-sm" value="{{ old('giadien') }}">
                     <span class="text-sm text-red-600">{{ $errors->first('giadien') }}</span>
                 </div>
                 <div class="a-group">
                     <label for="gianuoc" class="text-sm font-medium mb-1 inline-block">Giá nước (VNĐ/Khối)</label>
-                    <input type="number" name="gianuoc" id="gianuoc" class="input-form w-full px-3 py-2 border border-gray-300 text-sm">
+                    <input type="number" name="gianuoc" id="gianuoc" class="input-form w-full px-3 py-2 border border-gray-300 text-sm" value="{{ old('gianuoc') }}">
                     <span class="text-sm text-red-600">{{ $errors->first('gianuoc') }}</span>
                 </div>
             </div>

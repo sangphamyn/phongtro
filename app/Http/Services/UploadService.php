@@ -14,7 +14,7 @@ class UploadService
                     );
                     return '/storage/' . $pathFull . '/' . $name;
                 }
-                else if(sizeof($request->file('file')) > 1) {
+                else if(sizeof($request->file('file')) >= 1) {
                     $rs = '';
                     for($i = 0; $i < sizeof($request->file('file')); $i++) {
                         $name = $request->file('file')[$i]->getClientOriginalName();

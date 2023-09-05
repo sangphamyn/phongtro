@@ -1,8 +1,6 @@
 @extends('main')
 
 @section('content')
-<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 <div class="home w-full py-10">
     <div class="banner-content w-[700px] mx-auto p-10">
         <h1 class="font-extrabold">Website kết nối<br> người thuê và chủ phòng trọ, căn hộ</h1>

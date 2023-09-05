@@ -8,5 +8,6 @@
 	@yield('content')
 	@include('footer')
 </body>
+<script src="/template/script/flickity.js"></script>
 <script src="/template/script/script.js"></script>
 </html>
