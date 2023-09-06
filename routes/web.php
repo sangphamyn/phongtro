@@ -43,6 +43,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit', [UserController::class, 'edit']);
         Route::post('/edit', [UserController::class, 'update']);
         Route::get('/dadang', [UserController::class, 'dadang']);
+        Route::get('/chuaduyet', [UserController::class, 'chuaduyet']);
+        Route::get('/tuchoi', [UserController::class, 'tuchoi']);
     }
     );
     Route::get('/profile', [UserController::class, 'index']);
