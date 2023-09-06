@@ -26,6 +26,7 @@ Route::post('/login', [LoginController::class, 'store']);
 Route::get('/xa', [WardController::class, 'search']);
 Route::get('/logout', [LoginController::class, 'destroy']);
 Route::get('/',[LoginController::class, 'home']);
+Route::get('/post/list', [PostController::class, 'showAll']);
 Route::middleware('auth')->group(function () {
 
     /* Admin */
@@ -52,7 +53,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('/post')->group(function () {
         Route::get('/create', [PostController::class, 'index']);
         Route::post('/create', [PostController::class, 'store']);
-        Route::get('/list', [PostController::class, 'showAll'])->name('post_list');
+        // Route::get('/list', [PostController::class, 'showAll'])->name('post_list');
         Route::get('/{post}', [PostController::class, 'show']);
         Route::post('/{post}', [CommentController::class, 'store']);
     }

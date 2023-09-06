@@ -78,6 +78,8 @@
             </div>
             {{ csrf_field() }}
             <input type="submit" name="signup" value="Đăng" class="btn-type-2 block px-7 py-2 cursor-pointer mx-auto text-white hover:text-white font-medium">
+            <p class="italic">Phí đăng: 15,000 đ/bài</p>
+            @include('../alert')
         </form>
     </div>
 </div>

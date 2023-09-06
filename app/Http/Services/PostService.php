@@ -16,6 +16,10 @@ class PostService
         try {
             $request->offsetUnset('_token');
             $request->merge(["author"=>Auth::user()->id]);
+            if(Auth::user()->sodu < 15000) {
+                Session::flash('error', 'Không đủ tiền');
+                return;
+            }
             $post = Post::create($request->all());
             $post_id = $post->id;
             if($request->input('services')) {
@@ -28,10 +32,9 @@ class PostService
                     Image::insert(["id_post" => $post_id, "url" => $image]);
                 }
             }
-            Session::flash('success', 'Create success');
+            Session::flash('success', 'Đăng thành công');
         } catch(\Exception $e) {
-            dd($e);
-            Session::flash('error', 'Create fail' . $e);
+            Session::flash('error', 'Lỗi' . $e);
             return false;
         }
     }
