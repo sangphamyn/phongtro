@@ -30,13 +30,12 @@ class PostController extends Controller
         return redirect()->back();
     }
     public function showAll() {
-        $posts = Post::with('huyen')->with('xa')->with('services')->with('images')->paginate();
+        $posts = Post::where('trangthai','=','1')->with('huyen')->with('xa')->with('services')->with('images')->paginate();
         $title = "Danh sách bài đăng";
         return view('post.list', compact('posts', 'title'));
     }
-    public function show() {
-        // $posts = Post::with('huyen')->with('xa')->with('services')->paginate();
+    public function show(Post $post) {
          $title = "Thông tin phòng";
-         return view('post.single', compact( 'title'));
+         return view('post.single', compact( 'title'), compact('post'));
      }
 }

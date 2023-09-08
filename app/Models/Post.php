@@ -31,4 +31,7 @@ class Post extends Model
     public function images() {
         return $this->hasMany(Image::class, 'id_post', 'id');
     }
+    public function author1() {
+        return $this->hasOne(User::class,'id','author');
+    }
 }
