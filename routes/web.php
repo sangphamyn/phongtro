@@ -33,9 +33,11 @@ Route::middleware('auth')->group(function () {
     Route::prefix('/admin')->group(function () {
         Route::get('/', [AdminController::class, 'index']);
         Route::post('/user/block', [AdminController::class, 'block']);
+        Route::post('/user/topup', [AdminController::class, 'topUp']);
         Route::get('/user/unblock', [AdminController::class, 'unblock']);
         Route::get('/user', [AdminController::class, 'getUser']);
         Route::get('/banned_user', [AdminController::class, 'getUserbanned']);
+        Route::get('/post', [AdminController::class, 'getPost']);
     }
     );
 

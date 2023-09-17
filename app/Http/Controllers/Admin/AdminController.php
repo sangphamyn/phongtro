@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\banned_acc;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -51,6 +52,15 @@ class AdminController extends Controller
             return redirect('/');
         }
     }
+    public function topUp(Request $request) {
+        if(Auth::check() && Auth::user()->role == 1) {
+            $request->offsetUnset('_token');
+            DB::select('UPDATE users SET sodu = sodu + '.$request->money.' WHERE id = ' . $request->id);
+            return redirect('/admin/user');
+        } else {
+            return redirect('/');
+        }
+    }
     public function unblock(Request $request) {
         if(Auth::check() && Auth::user()->role == 1) {
             $request->offsetUnset('_token');
@@ -61,4 +71,16 @@ class AdminController extends Controller
             return redirect('/');
         }
     }
+    public function getPost(Request $request) {
+        $trangthai = $request->trangthai;
+        if(Auth::check() && Auth::user()->role == 1) {
+            $posts = Post::where('trangthai','=',$trangthai)->with('huyen')->with('xa')->with('services')->with('images')->paginate();
+            return view('admin.post', [
+                'title' => 'Danh sách bài đăng',
+                'posts' => $posts]);
+        } else {
+            return redirect('/');
+        }
+    }
 }
+ 

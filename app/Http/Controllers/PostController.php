@@ -44,9 +44,9 @@ class PostController extends Controller
          $title = "Thông tin phòng";
          return view('post.single', compact( 'title'), compact('post'));
      }
-    public function showPost_District() {
-        $posts = Post::where('trangthai','=','1')->with('huyen')->with('xa')->with('services')->with('images')->paginate();
-        $title = "Danh sách bài đăng";
-        return view('post.list', compact('posts', 'title'));
-    }
+    // public function showPost_District() {
+    //     $posts = Post::where('trangthai','=','1')->with('huyen')->with('xa')->with('services')->with('images')->paginate();
+    //     $title = "Danh sách bài đăng";
+    //     return view('post.list', compact('posts', 'title'));
+    // }
 }

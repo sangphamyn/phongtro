@@ -29,7 +29,7 @@
                         <i class="las la-money-bill"></i> Nạp tiền
                       </button>
                       <ul class="dropdown-menu p-2 text-center">
-                        <form action="/admin/user/block?id={{$user->id}}" method="POST">
+                        <form action="/admin/user/topup?id={{$user->id}}" method="POST">
                           <div class="mb-2">
                             <label for="money" class="text-sm font-medium mb-1 inline-block">Số tiền</label>
                             <input name="money" id="money" class="input-form w-full px-3 py-2 border border-gray-300 text-sm" type="number"/>
