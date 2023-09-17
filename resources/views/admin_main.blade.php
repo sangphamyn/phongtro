@@ -20,7 +20,7 @@
 			<li class="active">
 			<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Quản lý người dùng</a>
 			<ul class="collapse list-unstyled" id="homeSubmenu">
-				<li><a href="admin/user">Danh sách</a></li>
+				<li><a href="/admin/user">Danh sách</a></li>
 			</ul>
 			</li>
 			<li>
@@ -56,7 +56,7 @@
 				<a class="nav-link" href="#">Portfolio</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">Contact</a>
+				<a class="nav-link" href="/logout">Đăng xuất</a>
 			</li>
 			</ul>
 		</div>
