@@ -71,12 +71,32 @@ class AdminController extends Controller
             return redirect('/');
         }
     }
+    public function duyet(Request $request) {
+        if(Auth::check() && Auth::user()->role == 1) {
+            $request->offsetUnset('_token');
+            DB::select('UPDATE posts SET trangthai = 1 WHERE id = ' . $request->id);
+            return redirect('/admin/post?trangthai=1');
+        } else {
+            return redirect('/');
+        }
+    }public function tuchoi(Request $request) {
+        if(Auth::check() && Auth::user()->role == 1) {
+            $request->offsetUnset('_token');
+            DB::select('UPDATE posts SET trangthai = 2 WHERE id = ' . $request->id);
+            return redirect('/admin/post?trangthai=2');
+        } else {
+            return redirect('/');
+        }
+    }
     public function getPost(Request $request) {
         $trangthai = $request->trangthai;
+        if($trangthai==1) $title = "Danh sách đã duyệt";
+        elseif($trangthai==0) $title = "Danh sách chưa duyệt";
+        else $title = "Danh sách từ chối";
         if(Auth::check() && Auth::user()->role == 1) {
             $posts = Post::where('trangthai','=',$trangthai)->with('huyen')->with('xa')->with('services')->with('images')->paginate();
             return view('admin.post', [
-                'title' => 'Danh sách bài đăng',
+                'title' => $title,
                 'posts' => $posts]);
         } else {
             return redirect('/');

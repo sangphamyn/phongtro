@@ -27,14 +27,24 @@
 			<a href="#" class="img logo rounded-circle mb-5" style="background-image: url(/adminlibrary/images/logo.jpg);"></a>
 		<ul class="list-unstyled components mb-5">
 			<li class="active">
-			<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Quản lý người dùng</a>
-			<ul class="collapse list-unstyled" id="homeSubmenu">
-				<li><a href="/admin/user">Danh sách</a></li>
-			</ul>
-			</li>
-			<li>
-				<a href="#">About</a>
-			</li>
+				<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Quản lý người dùng</a>
+				<ul class="collapse list-unstyled" id="homeSubmenu">
+					<li><a href="/admin/user">Danh sách</a></li>
+					<li><a href="/admin/banned_user">Danh sách bị khóa</a></li>
+				</ul>
+				</li>
+				<li>
+					<a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Quản lý bài đăng</a>
+					<ul class="collapse list-unstyled" id="homeSubmenu1">
+						<li><a href="/admin/post?trangthai=1">Danh sách đã duyệt</a></li>
+						<li><a href="/admin/post?trangthai=0">Danh sách chưa duyệt</a></li>
+						<li><a href="/admin/post?trangthai=2">Danh sách từ chối</a></li>
+					</ul>
+				</li>
+			
+				<li>
+					<a href="#">About</a>
+				</li>
 		</ul>
 		</div>
 	</nav>
