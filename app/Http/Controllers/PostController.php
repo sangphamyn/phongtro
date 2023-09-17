@@ -29,8 +29,14 @@ class PostController extends Controller
         $this->post->insert($request);
         return redirect()->back();
     }
-    public function showAll() {
-        $posts = Post::where('trangthai','=','1')->with('huyen')->with('xa')->with('services')->with('images')->paginate();
+    public function showAll(Request $request) {
+        $dt = $request->dt;
+        if($dt==null){
+            $posts = Post::where('trangthai','=','1')->with('huyen')->with('xa')->with('services')->with('images')->paginate();
+        }
+        else{
+            $posts = Post::where('trangthai','=','1')->where('id_dt', '=', $dt)->with('huyen')->with('xa')->with('services')->with('images')->paginate();
+        }
         $title = "Danh sách bài đăng";
         return view('post.list', compact('posts', 'title'));
     }
@@ -38,4 +44,9 @@ class PostController extends Controller
          $title = "Thông tin phòng";
          return view('post.single', compact( 'title'), compact('post'));
      }
+    public function showPost_District() {
+        $posts = Post::where('trangthai','=','1')->with('huyen')->with('xa')->with('services')->with('images')->paginate();
+        $title = "Danh sách bài đăng";
+        return view('post.list', compact('posts', 'title'));
+    }
 }
