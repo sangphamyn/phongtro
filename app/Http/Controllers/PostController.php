@@ -8,6 +8,7 @@ use App\Models\District;
 use App\Models\Service;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -42,6 +43,7 @@ class PostController extends Controller
     }
     public function show(Post $post) {
          $title = "Thông tin phòng";
+         DB::select('UPDATE posts SET luotxem = luotxem + 1 WHERE id = ' . $post->id);
          return view('post.single', compact( 'title'), compact('post'));
      }
     // public function showPost_District() {
