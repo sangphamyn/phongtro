@@ -32,6 +32,7 @@ class PostService
                     Image::insert(["id_post" => $post_id, "url" => $image]);
                 }
             }
+            DB::select('update users set sodu = sodu - 15000 where id = ' . Auth::user()->id);
             Session::flash('success', 'Đăng thành công');
         } catch(\Exception $e) {
             Session::flash('error', 'Lỗi' . $e);
