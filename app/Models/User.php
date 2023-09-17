@@ -40,4 +40,7 @@ class User extends Authenticatable
      *
      * @var array<string, string>
      */
+    public function banned() {
+        return $this->hasOne(banned_acc::class, 'id_user', 'id');
+    }
 }
