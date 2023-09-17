@@ -8,6 +8,7 @@ use App\Models\District;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
@@ -21,6 +22,19 @@ class LoginController extends Controller
     public function store(LoginRequest $request) {
         if(Auth::user()->role == 1)
             return redirect()->to('/admin');
+        if (Auth::check()) {
+            if(Auth::user()->trangthai == 0) {
+                $reason = DB::select('select reason from banned_accs where id_user = ' . Auth::user()->id)[0]->reason;
+                Auth::logout();
+                return view('banned', [
+                    'title' => 'Đăng nhập',
+                    'reason' => $reason
+                ]);
+            }
+            
+            else
+                return redirect()->to('/');
+        }
         return redirect()->to('/');
     }
     public function destroy() {
