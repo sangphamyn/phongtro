@@ -45,7 +45,7 @@ class PostController extends Controller
     public function showAll(Request $request) {
         $postsQuery = Post::query();
         $postsQuery->where('trangthai','=','1')->with('xa')->with('services')->with('images');
-        if($request->title!=null) $postsQuery->where('title', 'like',"N'%'.$request->title.'%");
+        if($request->title!=null) $postsQuery->where('title', 'like','%'.$request->title.'%');
         if($request->dt!='none'&&$request->dt!=null) $postsQuery->where('id_dt', '=', $request->dt);
         if($request->xa!='none' && $request->xa!=null && $request->xa != 'Chọn xã/phường') $postsQuery->where('id_w', '=', $request->xa);
         if(($request->min_price!=null)&&($request->max_price!=null)) $postsQuery->where('giaphong', '>', $request->min_price)->where('giaphong', '<', $request->max_price);
