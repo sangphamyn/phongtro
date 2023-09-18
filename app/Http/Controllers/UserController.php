@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     public function index() {
         $id=Auth::user()->id;
-        $da_duyet = DB::select('select count(id) as a from posts where author = ' .$id. ' and trangthai = 1');
+        $da_duyet = DB::select('select count(id) as a from posts where author = ' .$id. ' and (trangthai = 1 or trangthai = 4)');
         $doi_duyet = DB::select('select count(id) as a from posts where author = ' .$id. ' and trangthai = 0');
         $tu_choi = DB::select('select count(id) as a from posts where author = ' .$id. ' and trangthai = 2');
         return view('profile.index', [

@@ -15,13 +15,14 @@ class AdminController extends Controller
     public function index() {
         if(Auth::user()->role == 1)
             return view('admin.index', [
-                'title' => 'Admin'
+                'title' => 'Admin',
+                'active' => ''
             ]);
         return redirect('/');
     }
     public function getUser() {
         if(Auth::check() && Auth::user()->role == 1) {
-            $users = User::where('trangthai','=','1')->get();
+            $users = User::where('trangthai','=','1')->where('role','=','0')->get();
             return view('admin.user', [
                 'title' => 'Danh sách người dùng',
                 'active' => 'qlnd',
