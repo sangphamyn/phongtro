@@ -24,6 +24,7 @@ class WardController extends Controller
     public function addtowishlist(Request $request) {
         if($request->ajax()) {
             DB::select("insert into wishlists(id_user,id_post) values (" . Auth::user()->id . "," . $request->post_id .")");
+            DB::select("Update posts Set luotquantam = luotquantam + 1 Where id = " . $request->post_id);
             $phone = DB::select("select phone from posts,users where posts.author = users.id and posts.id = " . $request->post_id)[0]->phone;
             return $phone;
         }
@@ -32,6 +33,7 @@ class WardController extends Controller
     public function removewishlist(Request $request) {
         if($request->ajax()) {
             DB::select("DELETE FROM wishlists WHERE id_user = " . Auth::user()->id . " AND id_post = " . $request->post_id);
+            DB::select("Update posts Set luotquantam = luotquantam - 1 Where id = " . $request->post_id);
             return 'success';
         }
     }

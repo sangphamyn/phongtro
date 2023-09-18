@@ -18,7 +18,8 @@ class Post extends Model
         'giaphong',
         'giadien',
         'gianuoc',
-        'luotxem'
+        'luotxem',
+        'luotquantam'
     ];
     public function huyen() {
         return $this->hasOne(District::class, 'id', 'id_dt');

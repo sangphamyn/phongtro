@@ -48,6 +48,7 @@ class LoginController extends Controller
         $services = Service::get();
 
         $new_posts = Post::where('trangthai','=','1')->with('huyen')->with('xa')->with('services')->with('images')->orderBy('created_at', 'desc')->paginate(8);
+        $wishlist_posts = Post::where('trangthai','=','1')->with('huyen')->with('xa')->with('services')->with('images')->orderBy('luotquantam', 'desc')->paginate(6);
         $tptn = DB::select('select count(id) as a from posts where id_dt = 1');
         $tppy = DB::select('select count(id) as a from posts where id_dt = 8');
         $tpsc = DB::select('select count(id) as a from posts where id_dt = 2');
@@ -62,7 +63,8 @@ class LoginController extends Controller
             'tpsc' => $tpsc[0]->a,
             'hpb' => $hpb[0]->a,
             'hdt' => $hdt[0]->a,
-            'new_posts'=>$new_posts
+            'new_posts'=>$new_posts,
+            'wishlist_posts'=>$wishlist_posts
         ]);
     }
 }
