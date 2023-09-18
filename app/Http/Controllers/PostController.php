@@ -31,14 +31,28 @@ class PostController extends Controller
         $this->post->insert($request);
         return redirect()->back();
     }
+    // public function showAll(Request $request) {
+    //     $dt = $request->dt;
+    //     if($dt==null){
+    //         $posts = Post::where('trangthai','=','1')->with('huyen')->with('xa')->with('services')->with('images')->paginate();
+    //     }
+    //     else{
+    //         $posts = Post::where('trangthai','=','1')->where('id_dt', '=', $dt)->with('huyen')->with('xa')->with('services')->with('images')->paginate();
+    //     }
+    //     $title = "Danh sách bài đăng";
+    //     return view('post.list', compact('posts', 'title'));
+    // }
+
     public function showAll(Request $request) {
-        $dt = $request->dt;
-        if($dt==null){
-            $posts = Post::where('trangthai','=','1')->with('huyen')->with('xa')->with('services')->with('images')->paginate();
-        }
-        else{
-            $posts = Post::where('trangthai','=','1')->where('id_dt', '=', $dt)->with('huyen')->with('xa')->with('services')->with('images')->paginate();
-        }
+        $postsQuery = Post::query();
+        $postsQuery->where('trangthai','=','1')->with('xa')->with('services')->with('images');
+        if($request->title!=null) $postsQuery->where('title', 'like','%'.$request->title.'%');
+        if($request->dt!='none'&&$request->dt!=null) $postsQuery->where('id_dt', '=', $request->dt);
+        if($request->xa!='none' && $request->xa!=null && $request->xa != 'Chọn xã/phường') $postsQuery->where('id_w', '=', $request->xa);
+        if(($request->min_price!=null)&&($request->max_price!=null)) $postsQuery->where('giaphong', '>', $request->min_price)->where('giaphong', '<', $request->max_price);
+        if(($request->min_area!=null)&&($request->max_area!=null)) $postsQuery->where('dientich', '>', $request->min_area)->where('dientich', '<', $request->max_area);
+        
+        $posts = $postsQuery->get();
         $title = "Danh sách bài đăng";
         return view('post.list', compact('posts', 'title'));
     }
@@ -49,9 +63,12 @@ class PostController extends Controller
          $user_wishlist = DB::select('select * from wishlists as w, users as u where w.id_user = u.id and w.id_post = ' . $post->id);
          return view('post.single', compact( 'title', 'isLike', 'user_wishlist'), compact('post'));
      }
-    // public function showPost_District() {
-    //     $posts = Post::where('trangthai','=','1')->with('huyen')->with('xa')->with('services')->with('images')->paginate();
-    //     $title = "Danh sách bài đăng";
-    //     return view('post.list', compact('posts', 'title'));
-    // }
+     public function hetPhong(Request $request) {
+            DB::select('UPDATE posts SET trangthai = 4 WHERE id = ' . $request->id);
+            return redirect('/profile/dadang');
+    }
+    public function conPhong(Request $request) {
+        DB::select('UPDATE posts SET trangthai = 1 WHERE id = ' . $request->id);
+        return redirect('/profile/dadang');
+}
 }

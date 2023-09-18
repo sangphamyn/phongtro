@@ -22,7 +22,7 @@ class AdminController extends Controller
     }
     public function getUser() {
         if(Auth::check() && Auth::user()->role == 1) {
-            $users = User::where('trangthai','=','1')->get();
+            $users = User::where('trangthai','=','1')->where('role','=','0')->get();
             return view('admin.user', [
                 'title' => 'Danh sách người dùng',
                 'active' => 'qlnd',
