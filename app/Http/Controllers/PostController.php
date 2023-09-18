@@ -46,7 +46,8 @@ class PostController extends Controller
          $title = "Thông tin phòng";
          DB::select('UPDATE posts SET luotxem = luotxem + 1 WHERE id = ' . $post->id);
          $isLike = DB::select('Select count(*) as a From wishlists Where id_user = ' . Auth::user()->id .' and id_post = ' . $post->id)[0]->a;
-         return view('post.single', compact( 'title', 'isLike'), compact('post'));
+         $user_wishlist = DB::select('select * from wishlists as w, users as u where w.id_user = u.id and w.id_post = ' . $post->id);
+         return view('post.single', compact( 'title', 'isLike', 'user_wishlist'), compact('post'));
      }
     // public function showPost_District() {
     //     $posts = Post::where('trangthai','=','1')->with('huyen')->with('xa')->with('services')->with('images')->paginate();

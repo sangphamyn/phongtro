@@ -35,4 +35,7 @@ class Post extends Model
     public function author1() {
         return $this->hasOne(User::class,'id','author');
     }
+    public function wishlist() {
+        return $this->belongsToMany(wishlist::class,'wishlist', 'id_post', 'id_user');
+    }
 }

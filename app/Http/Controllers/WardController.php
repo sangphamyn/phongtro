@@ -24,7 +24,8 @@ class WardController extends Controller
     public function addtowishlist(Request $request) {
         if($request->ajax()) {
             DB::select("insert into wishlists(id_user,id_post) values (" . Auth::user()->id . "," . $request->post_id .")");
-            return 'success';
+            $phone = DB::select("select phone from posts,users where posts.author = users.id and posts.id = " . $request->post_id)[0]->phone;
+            return $phone;
         }
     }
 
