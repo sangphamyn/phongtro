@@ -8,6 +8,7 @@ use App\Models\District;
 use App\Models\Service;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
@@ -44,7 +45,8 @@ class PostController extends Controller
     public function show(Post $post) {
          $title = "Thông tin phòng";
          DB::select('UPDATE posts SET luotxem = luotxem + 1 WHERE id = ' . $post->id);
-         return view('post.single', compact( 'title'), compact('post'));
+         $isLike = DB::select('Select count(*) as a From wishlists Where id_user = ' . Auth::user()->id .' and id_post = ' . $post->id)[0]->a;
+         return view('post.single', compact( 'title', 'isLike'), compact('post'));
      }
     // public function showPost_District() {
     //     $posts = Post::where('trangthai','=','1')->with('huyen')->with('xa')->with('services')->with('images')->paginate();

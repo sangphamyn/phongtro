@@ -24,6 +24,8 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
 Route::get('/xa', [WardController::class, 'search']);
+Route::post('/addtowishlist', [WardController::class, 'addtowishlist']);
+Route::post('/removewishlist', [WardController::class, 'removewishlist']);
 Route::get('/logout', [LoginController::class, 'destroy']);
 Route::get('/',[LoginController::class, 'home']);
 Route::get('/post/list', [PostController::class, 'showAll']);

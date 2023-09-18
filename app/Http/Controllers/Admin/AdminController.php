@@ -15,7 +15,8 @@ class AdminController extends Controller
     public function index() {
         if(Auth::user()->role == 1)
             return view('admin.index', [
-                'title' => 'Admin'
+                'title' => 'Admin',
+                'active' => ''
             ]);
         return redirect('/');
     }

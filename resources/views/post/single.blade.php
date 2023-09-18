@@ -5,7 +5,7 @@
         <div class="post-main w-2/3 mr-3">
             <div class="w3-content w3-display-container h-[375px] post-img-list">
                 @foreach($post->images as $img)
-                    <div class="h-full w-full"><img class="" src="{{$img->url}}" style="width:100%; height:100%; object-fit: contain; "></div>
+                    <div class="h-full w-full"><img class="" src="{{$img->url}}" style="width:100%; height:100%; object-fit: cover; "></div>
                 @endforeach
             </div>
             <div class="seciton bg-white px-3 py-2 mb-3 mt-10">
@@ -51,6 +51,11 @@
                     </span>
                     <span class="ml-2 click-to-show">Bấm để hiện số</span>
                 </div>
+                @if($isLike == 1)
+                    <button class="button-5 mt-5 flex items-center addtoWishlist" role="button" value="remove" post-id="{{$post->id}}">Đã quan tâm <svg fill="#ffffff" style="margin-top: 3px; margin-left: 3px;" width="24px" height="24px" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></button>
+                @else
+                    <button class="button-5 mt-5 flex items-center addtoWishlist" role="button" value="add" post-id="{{$post->id}}">Quan tâm <svg style="margin-top: 3px; margin-left: 3px;" width="24px" height="24px" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></button>
+                @endif
             </div>
             <div class="bg-white px-3 py-2">
             </div>
