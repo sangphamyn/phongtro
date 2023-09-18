@@ -32,12 +32,12 @@
                         <form action="/admin/user/topup?id={{$user->id}}" method="POST">
                           <div class="mb-2">
                             <label for="money" class="text-sm font-medium mb-1 inline-block">Số tiền</label>
-                            <input name="money" id="money" class="input-form w-full px-3 py-2 border border-gray-300 text-sm" type="number"/>
+                            <input name="money" id="money" min='0' class="input-form w-full px-3 py-2 border border-gray-300 text-sm" type="number" required/>
                           </div>
                           {{ csrf_field() }}
                           <input type="submit" name="block" value="Nạp" class="btn btn-success">
                         </form>
-                      </ul>
+                      </ul> 
                     </div>
                     <div class="dropdown inline" style="display: inline">
                       <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -47,7 +47,7 @@
                         <form action="/admin/user/block?id={{$user->id}}" method="POST">
                           <div class="mb-2">
                             <label for="reason" class="text-sm font-medium mb-1 inline-block">Lý do</label>
-                            <textarea name="reason" id="reason" class="input-form w-full px-3 py-2 border border-gray-300 text-sm" cols="30" rows="2">{{ old('description') }}</textarea>
+                            <textarea name="reason" id="reason" class="input-form w-full px-3 py-2 border border-gray-300 text-sm" required cols="30" rows="2">{{ old('description') }}</textarea>
                           </div>
                           {{ csrf_field() }}
                           <input type="submit" name="block" value="Khóa" class="btn btn-success">

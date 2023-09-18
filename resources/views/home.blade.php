@@ -5,7 +5,7 @@
     <div class="banner-content w-[700px] mx-auto p-10">
         <h1 class="font-extrabold">Website kết nối<br> người thuê và chủ phòng trọ, căn hộ</h1>
         <p class="mb-10">Kết nối bạn với hàng vạn phòng trọ tiện nghi theo nhu cầu</p>
-        <form method="POST">
+        <form action="/post/list" method="GET">
             <div class="search-box text-center">
                 <div class="search-input mb-4">
                     <input type="text" name="query" placeholder="Cổng chính CNTT">
