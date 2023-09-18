@@ -8,12 +8,12 @@
         <form action="/post/list" method="GET">
             <div class="search-box text-center">
                 <div class="search-input mb-4">
-                    <input type="text" name="query" placeholder="Cổng chính CNTT">
+                    <input type="text" name="title" placeholder="Cổng chính CNTT">
                 </div>
                 <div class="mb-4 text-left">
                     <div class="flex flex-wrap">
                         <div class="custom-select custom-select-district mr-2 mb-2">
-                            <select class="hidden" name="huyen">
+                            <select class="hidden" name="dt">
                                 <option value="none">Quận/Huyện: </option>
                                 @foreach($districts as $key => $district)
                                     <option value="{{$district->id}}">{{$district->name}}</option>
