@@ -38,6 +38,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/user', [AdminController::class, 'getUser']);
         Route::get('/banned_user', [AdminController::class, 'getUserbanned']);
         Route::get('/post', [AdminController::class, 'getPost']);
+        Route::get('/post/duyet', [AdminController::class, 'duyet']);
+        Route::get('/post/tuchoi', [AdminController::class, 'tuchoi']);
     }
     );
 
