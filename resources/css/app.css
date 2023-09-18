@@ -664,3 +664,49 @@ input[type="date"]{
     box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
     transform: translateY(0);
   }
+
+.thumb {
+    height: 150px;
+}
+.motel-item:hover {
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, .35);
+}
+/* ===CODFE HEADING STYLE #9 === */
+.cf-title-09 h3{
+    text-align:center; font-size:30px; text-transform:uppercase; color:#222; letter-spacing:1px;
+    font-family:"Playfair Display", serif; font-weight:500;
+}
+.cf-title-09 p{
+    font-family:"Mulish", serif; font-weight:500;
+}
+.cf-title-09 h3 span {
+    margin-top: 5px;
+    font-size:15px; color:#444; word-spacing:1px; font-weight:normal; letter-spacing:2px;
+    text-transform: uppercase; font-family:"Raleway", sans-serif; font-weight:500;
+
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    grid-template-rows: 27px 0;
+    grid-gap: 20px;
+    align-items: center;
+}
+
+.cf-title-09 h3 span:after,.cf-title-09 h3 span:before {
+    content: " ";
+    display: block;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    height: 5px;
+background-color:#f8f8f8;
+}
+.dropdown-menu {
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.25s;
+    transform: translate(50%,-10px);
+}
+.filter.relative:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(50%,0);
+}

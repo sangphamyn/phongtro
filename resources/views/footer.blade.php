@@ -13,13 +13,13 @@
         <div class="w-1/5 px-4 footer-column">
             <h4 class="mb-3 font-extrabold">Liên kết</h4>
             <p>
-                <a href="/" class="link-menu py-1 block">Đăng nhập</a>
+                <a href="/login" class="link-menu py-1 block">Đăng nhập</a>
             </p>
             <p>
-                <a href="/" class="link-menu py-1 block">Đăng ký</a>
+                <a href="/register" class="link-menu py-1 block">Đăng ký</a>
             </p>
             <p>
-                <a href="/" class="link-menu py-1 block">Tài khoản</a>
+                <a href="/profile" class="link-menu py-1 block">Tài khoản</a>
             </p>
             <p>
                 <a href="/" class="link-menu py-1 block">Nạp tiền</a>
@@ -28,10 +28,10 @@
         <div class="w-1/5 px-4 footer-column">
             <h4 class="mb-3 font-extrabold">Liên kết</h4>
             <p>
-                <a href="/" class="link-menu py-1 block">Đăng tin</a>
+                <a href="/post/create" class="link-menu py-1 block">Đăng tin</a>
             </p>
             <p>
-                <a href="/" class="link-menu py-1 block">Xem danh sách</a>
+                <a href="/post/list" class="link-menu py-1 block">Xem danh sách</a>
             </p>
             <p>
                 <a href="/" class="link-menu py-1 block">Bảng giá đăng tin</a>

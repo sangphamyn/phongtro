@@ -1,5 +1,14 @@
 @extends('main')
 @section('content')
+<style>
+    .custom-select-district svg,
+    .custom-select-xa svg {
+        stroke: #3d3d3d;
+    }
+    .register-form {
+        border-top-color: #32be8f;
+    }
+</style>
 <div class="container bg-gray-50 min-h-screen">
     <div class="w-[700px] mx-auto p-[50px]">
         <h2 class="register-title text-3xl font-semibold text-center">Tạo bài đăng</h2>

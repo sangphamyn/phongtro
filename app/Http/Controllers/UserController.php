@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\User;
+use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -54,8 +55,10 @@ class UserController extends Controller
         $tu_choi = DB::select('select count(id) as a from posts where author = ' .$id. ' and trangthai = 2');
         $posts = Post::with('huyen')->with('xa')->with('services')->with('images')
                         ->where('author','=',$id)
-                        ->where('trangthai','=','1')
-                        ->orWhere('trangthai','=','4')
+                        ->where(function (Builder $query) {
+                            $query->where('trangthai','=','1')
+                                ->orWhere('trangthai','=','4');
+                        })
                         ->paginate();
         return view('profile.dadang', [
             'title' => 'Danh sách bài đã được duyệt',

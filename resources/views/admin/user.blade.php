@@ -21,11 +21,17 @@
             @foreach ($users as $key => $user)
                 <tr>
                   <th scope="row">{{$key + 1}}</th>
-                  <td>{{$user->name}}</td>
+                  <td class="flex items-center">
+                    @if ($user->avatar != '')
+                        <img src="{{ $user->avatar }}" alt="" class="w-[30px] h-[30px] rounded-full mr-3 object-cover pointer-events-none">
+                    @else
+                        <img src="/template/imgs/avatar-default.png" alt="" class="w-[30px] h-[30px] rounded-full mr-3 object-cover pointer-events-none">
+                    @endif
+                    {{$user->name}}</td>
                   <td>{{number_format($user->sodu)}} đ</td>
                   <td>
                     <div class="dropdown inline" style="display: inline">
-                      <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <button class="btn btn-success dropdown-toggle" style="background-color: #28a745" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="las la-money-bill"></i> Nạp tiền
                       </button>
                       <ul class="dropdown-menu p-2 text-center">
@@ -35,12 +41,12 @@
                             <input name="money" id="money" min='0' class="input-form w-full px-3 py-2 border border-gray-300 text-sm" type="number" required/>
                           </div>
                           {{ csrf_field() }}
-                          <input type="submit" name="block" value="Nạp" class="btn btn-success">
+                          <input type="submit" name="block" value="Nạp" class="btn btn-success" style="background-color: #28a745">
                         </form>
                       </ul> 
                     </div>
                     <div class="dropdown inline" style="display: inline">
-                      <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <button class="btn btn-danger dropdown-toggle" type="button" style="background-color: #dc3545" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="las la-lock"></i> Khóa
                       </button>
                       <ul class="dropdown-menu p-2 text-center">
@@ -50,7 +56,7 @@
                             <textarea name="reason" id="reason" class="input-form w-full px-3 py-2 border border-gray-300 text-sm" required cols="30" rows="2">{{ old('description') }}</textarea>
                           </div>
                           {{ csrf_field() }}
-                          <input type="submit" name="block" value="Khóa" class="btn btn-success">
+                          <input type="submit" name="block" value="Khóa" class="btn btn-success" style="background-color: #dc3545">
                         </form>
                       </ul>
                     </div>

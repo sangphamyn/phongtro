@@ -21,7 +21,7 @@
                   <td>{{number_format($user->sodu)}} đ</td>
                   <td>{{$user->banned->reason}}</td>
                   <td>
-                    <a type="button" href="/admin/user/unblock?id={{$user->id}}" class="btn btn-success"><i class="fas fa-edit"></i>Bỏ khóa</a>
+                    <a type="button" href="/admin/user/unblock?id={{$user->id}}" class="btn btn-success" style="background-color: #28a745"><i class="fas fa-edit"></i>Bỏ khóa</a>
                   </td>
                 </tr>
             @endforeach

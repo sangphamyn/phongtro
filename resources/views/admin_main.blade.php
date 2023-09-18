@@ -24,7 +24,7 @@
 	<div class="wrapper d-flex align-items-stretch">
 		<nav id="sidebar">
 			<div class="p-4 pt-5">
-			<a href="#" class="img logo rounded-circle mb-5" style="background-image: url(/adminlibrary/images/logo.jpg);"></a>
+			<a href="/admin" class="img logo rounded-circle mb-5" style="background-image: url(/adminlibrary/images/logo.jpg);"></a>
 		<ul class="list-unstyled components mb-5">
 			<li class="active">
 			<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Quản lý người dùng</a>
@@ -65,13 +65,7 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="nav navbar-nav ml-auto">
 			<li class="nav-item active">
-				<a class="nav-link" href="#">Home</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">About</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">Portfolio</a>
+				<a class="nav-link" href="/">Giao diện người dùng</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="/logout">Đăng xuất</a>
