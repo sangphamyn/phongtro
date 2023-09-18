@@ -3,8 +3,8 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/adminlibrary/css/style.css">
 	<link rel="stylesheet" href="/template/css/admin_style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -28,9 +28,18 @@
 		<ul class="list-unstyled components mb-5">
 			<li class="active">
 			<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Quản lý người dùng</a>
-			<ul class="collapse list-unstyled" id="homeSubmenu">
+			<ul class="collapse list-unstyled @if($active == 'qlnd') show @endif" id="homeSubmenu">
 				<li><a href="/admin/user">Danh sách</a></li>
+				<li><a href="/admin/banned_user">Danh sách bị khóa</a></li>
 			</ul>
+			</li>
+			<li>
+				<a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Quản lý bài đăng</a>
+				<ul class="collapse list-unstyled @if($active == 'qlbd') show @endif" id="homeSubmenu1">
+					<li><a href="/admin/post?trangthai=1">Danh sách đã duyệt</a></li>
+					<li><a href="/admin/post?trangthai=0">Danh sách chưa duyệt</a></li>
+					<li><a href="/admin/post?trangthai=2">Danh sách từ chối</a></li>
+				</ul>
 			</li>
 			<li>
 				<a href="#">About</a>

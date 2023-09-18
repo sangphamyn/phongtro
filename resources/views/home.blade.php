@@ -5,72 +5,52 @@
     <div class="banner-content w-[700px] mx-auto p-10">
         <h1 class="font-extrabold">Website kết nối<br> người thuê và chủ phòng trọ, căn hộ</h1>
         <p class="mb-10">Kết nối bạn với hàng vạn phòng trọ tiện nghi theo nhu cầu</p>
-        <div class="search-box text-center">
-            <div class="search-input mb-4">
-                <input type="text" placeholder="Cổng chính CNTT">
-            </div>
-            <div class="mb-4 text-left">
-                <div class="flex flex-wrap">
-                    <div class="custom-select custom-select-district mr-2 mb-2">
-                        <select class="hidden">
-                            <option>Quận/Huyện: </option>
-                            @foreach($districts as $key => $district)
-                                <option value="{{$district->id}}">{{$district->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="custom-select custom-select-xa mr-2">
-                        <select class="hidden" id="xa">
-                            <option>Phường/Xã: </option>
-                        </select>
-                    </div>
-                    <div class="search-filter flex justify-between items-center relative mb-2">
-                        Mức giá <svg viewBox="0 0 32 32" width="30px" stroke="#ffffff" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="icomoon-ignore"> </g> <path d="M15.233 19.175l0.754 0.754 6.035-6.035-0.754-0.754-5.281 5.281-5.256-5.256-0.754 0.754 3.013 3.013z" fill="#ffffff"> </path> </g></svg>
-                        <div class="dropdown">
-                            <div class="input-group flex justify-between items-center">
-                                <input type="number" class="mr-3 input-price" placeholder="500.000 đ">
-                                <svg width="24px" class="  input-price" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" class="  input-price" stroke-width="0"></g><g class="  input-price" id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g class="  input-price" id="SVGRepo_iconCarrier"> <path d="M4 12H20M20 12L16 8M20 12L16 16" stroke="#000000" class="  input-price" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-                                <input type="number" class="ml-3 input-price" placeholder="1.600.000 đ">
+        <form method="POST">
+            <div class="search-box text-center">
+                <div class="search-input mb-4">
+                    <input type="text" name="query" placeholder="Cổng chính CNTT">
+                </div>
+                <div class="mb-4 text-left">
+                    <div class="flex flex-wrap">
+                        <div class="custom-select custom-select-district mr-2 mb-2">
+                            <select class="hidden" name="huyen">
+                                <option value="none">Quận/Huyện: </option>
+                                @foreach($districts as $key => $district)
+                                    <option value="{{$district->id}}">{{$district->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="custom-select custom-select-xa mr-2">
+                            <select class="hidden" id="xa" name="xa">
+                                <option value="none">Phường/Xã: </option>
+                            </select>
+                        </div>
+                        <div class="search-filter flex justify-between items-center relative mb-2">
+                            Mức giá <svg viewBox="0 0 32 32" width="30px" stroke="#ffffff" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="icomoon-ignore"> </g> <path d="M15.233 19.175l0.754 0.754 6.035-6.035-0.754-0.754-5.281 5.281-5.256-5.256-0.754 0.754 3.013 3.013z" fill="#ffffff"> </path> </g></svg>
+                            <div class="dropdown">
+                                <div class="input-group flex justify-between items-center">
+                                    <input type="number" class="mr-3 input-price" name="min_price" placeholder="500.000 đ">
+                                    <svg width="24px" class="  input-price" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" class="  input-price" stroke-width="0"></g><g class="  input-price" id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g class="  input-price" id="SVGRepo_iconCarrier"> <path d="M4 12H20M20 12L16 8M20 12L16 16" stroke="#000000" class="  input-price" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                                    <input type="number" class="ml-3 input-price" name="max_price" placeholder="1.600.000 đ">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="search-filter search-dientich flex justify-between items-center relative mr-2">
-                        Diện tích <svg viewBox="0 0 32 32" width="30px" stroke="#ffffff" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="icomoon-ignore"> </g> <path d="M15.233 19.175l0.754 0.754 6.035-6.035-0.754-0.754-5.281 5.281-5.256-5.256-0.754 0.754 3.013 3.013z" fill="#ffffff"> </path> </g></svg>
-                        <div class="dropdown">
-                            <div class="input-group flex justify-between items-center">
-                                <input type="number" class="input-price mr-1" placeholder="12"> m²
-                                <svg width="24px" class=" ml-3 input-price" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" class="  input-price" stroke-width="0"></g><g class="  input-price" id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g class="  input-price" id="SVGRepo_iconCarrier"> <path d="M4 12H20M20 12L16 8M20 12L16 16" stroke="#000000" class="  input-price" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-                                <input type="number" class="mr-1 ml-3 input-price" placeholder="26"> m²
-                            </div>
-                        </div>
-                    </div>
-                    <div class="search-filter search-dichvu flex justify-between items-center relative">
-                        Dịch vụ <svg viewBox="0 0 32 32" width="30px" stroke="#ffffff" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="icomoon-ignore"> </g> <path d="M15.233 19.175l0.754 0.754 6.035-6.035-0.754-0.754-5.281 5.281-5.256-5.256-0.754 0.754 3.013 3.013z" fill="#ffffff"> </path> </g></svg>
-                        <div class="dropdown">
-                            <div class="input-group w-max">
-                                <label class="ba">Điều hòa
-                                    <input type="checkbox" checked="checked" class="input-price">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="ba">Nóng lạnh
-                                    <input type="checkbox" class="input-price">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="ba">Khép kín
-                                    <input type="checkbox" checked="checked" class="input-price">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="ba">Tự quản
-                                    <input type="checkbox" checked="checked" class="input-price">
-                                    <span class="checkmark"></span>
-                                </label>
+                        <div class="search-filter search-dientich flex justify-between items-center relative mr-2">
+                            Diện tích <svg viewBox="0 0 32 32" width="30px" stroke="#ffffff" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="icomoon-ignore"> </g> <path d="M15.233 19.175l0.754 0.754 6.035-6.035-0.754-0.754-5.281 5.281-5.256-5.256-0.754 0.754 3.013 3.013z" fill="#ffffff"> </path> </g></svg>
+                            <div class="dropdown">
+                                <div class="input-group flex justify-between items-center">
+                                    <input type="number" class="input-price mr-1" name="min_area" placeholder="12"> m²
+                                    <svg width="24px" class=" ml-3 input-price" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" class="  input-price" stroke-width="0"></g><g class="  input-price" id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g class="  input-price" id="SVGRepo_iconCarrier"> <path d="M4 12H20M20 12L16 8M20 12L16 16" stroke="#000000" class="  input-price" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                                    <input type="number" class="mr-1 ml-3 input-price" name="max_area" placeholder="26"> m²
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                {{ csrf_field() }}
+                <button type="submit" class="btn-type-2 inline-block px-4 py-2 text-white hover:text-white font-medium text-sm bg-[#E03C31] inline-flex items-center"><svg width="20px" class="mr-1" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g clip-path="url(#clip0_15_152)"> <rect width="24" height="24" fill="transparent"></rect> <circle cx="10.5" cy="10.5" r="6.5" stroke="#ffffff" stroke-linejoin="round"></circle> <path d="M19.6464 20.3536C19.8417 20.5488 20.1583 20.5488 20.3536 20.3536C20.5488 20.1583 20.5488 19.8417 20.3536 19.6464L19.6464 20.3536ZM20.3536 19.6464L15.3536 14.6464L14.6464 15.3536L19.6464 20.3536L20.3536 19.6464Z" fill="#ffffff"></path> </g> <defs> <clipPath id="clip0_15_152"> <rect width="24" height="24" fill="white"></rect> </clipPath> </defs> </g></svg>Tìm kiếm</button>
             </div>
-            <a href="" class="btn-type-2 inline-block px-4 py-2 text-white hover:text-white font-medium text-sm bg-[#E03C31] inline-flex items-center"><svg width="20px" class="mr-1" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g clip-path="url(#clip0_15_152)"> <rect width="24" height="24" fill="transparent"></rect> <circle cx="10.5" cy="10.5" r="6.5" stroke="#ffffff" stroke-linejoin="round"></circle> <path d="M19.6464 20.3536C19.8417 20.5488 20.1583 20.5488 20.3536 20.3536C20.5488 20.1583 20.5488 19.8417 20.3536 19.6464L19.6464 20.3536ZM20.3536 19.6464L15.3536 14.6464L14.6464 15.3536L19.6464 20.3536L20.3536 19.6464Z" fill="#ffffff"></path> </g> <defs> <clipPath id="clip0_15_152"> <rect width="24" height="24" fill="white"></rect> </clipPath> </defs> </g></svg>Tìm kiếm</a>
-        </div>
+        </form>
     </div>
 </div>
 <div class="container mx-auto 2xl:w-[1200px] py-14 district-motel grid grid-cols-4 grid-rows-2 gap-5">

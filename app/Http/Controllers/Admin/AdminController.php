@@ -24,6 +24,7 @@ class AdminController extends Controller
             $users = User::where('trangthai','=','1')->get();
             return view('admin.user', [
                 'title' => 'Danh sách người dùng',
+                'active' => 'qlnd',
                 'users' => $users
             ]);
         } else {
@@ -35,6 +36,7 @@ class AdminController extends Controller
             $users = User::with('banned')->where('trangthai','=','0')->get();
             return view('admin.user_banned', [
                 'title' => 'Danh sách người dùng bị khóa',
+                'active' => 'qlnd',
                 'users' => $users
             ]);
         } else {
@@ -77,6 +79,7 @@ class AdminController extends Controller
             $posts = Post::where('trangthai','=',$trangthai)->with('huyen')->with('xa')->with('services')->with('images')->paginate();
             return view('admin.post', [
                 'title' => 'Danh sách bài đăng',
+                'active' => 'qlbd',
                 'posts' => $posts]);
         } else {
             return redirect('/');
