@@ -60,4 +60,12 @@ class PostController extends Controller
          DB::select('UPDATE posts SET luotxem = luotxem + 1 WHERE id = ' . $post->id);
          return view('post.single', compact( 'title'), compact('post'));
      }
+     public function hetPhong(Request $request) {
+            DB::select('UPDATE posts SET trangthai = 4 WHERE id = ' . $request->id);
+            return redirect('/profile/dadang');
+    }
+    public function conPhong(Request $request) {
+        DB::select('UPDATE posts SET trangthai = 1 WHERE id = ' . $request->id);
+        return redirect('/profile/dadang');
+}
 }

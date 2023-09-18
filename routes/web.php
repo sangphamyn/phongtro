@@ -60,6 +60,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/create', [PostController::class, 'index']);
         Route::post('/create', [PostController::class, 'store']);
         // Route::get('/list', [PostController::class, 'showAll'])->name('post_list');
+        Route::get('/hetphong', [PostController::class, 'hetPhong']);
+        Route::get('/conphong', [PostController::class, 'conPhong']);
         Route::get('/{post}', [PostController::class, 'show']);
         Route::post('/{post}', [CommentController::class, 'store']);
     }

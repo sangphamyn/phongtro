@@ -49,12 +49,13 @@ class UserController extends Controller
         $id=Auth::user()->id;
         // $posts = DB::select('select * from posts, images where author = ' .$id. ' and trangthai = 1 and posts.id = images.id_post');
         $id=Auth::user()->id;
-        $da_duyet = DB::select('select count(id) as a from posts where author = ' .$id. ' and trangthai = 1');
+        $da_duyet = DB::select('select count(id) as a from posts where author = ' .$id. ' and (trangthai = 1 or trangthai = 4)' );
         $doi_duyet = DB::select('select count(id) as a from posts where author = ' .$id. ' and trangthai = 0');
         $tu_choi = DB::select('select count(id) as a from posts where author = ' .$id. ' and trangthai = 2');
         $posts = Post::with('huyen')->with('xa')->with('services')->with('images')
                         ->where('author','=',$id)
                         ->where('trangthai','=','1')
+                        ->orWhere('trangthai','=','4')
                         ->paginate();
         return view('profile.dadang', [
             'title' => 'Danh sách bài đã được duyệt',
@@ -68,7 +69,7 @@ class UserController extends Controller
         $id=Auth::user()->id;
         // $posts = DB::select('select * from posts, images where author = ' .$id. ' and trangthai = 1 and posts.id = images.id_post');
         $id=Auth::user()->id;
-        $da_duyet = DB::select('select count(id) as a from posts where author = ' .$id. ' and trangthai = 1');
+        $da_duyet = DB::select('select count(id) as a from posts where author = ' .$id. ' and (trangthai = 1 or trangthai = 4)');
         $doi_duyet = DB::select('select count(id) as a from posts where author = ' .$id. ' and trangthai = 0');
         $tu_choi = DB::select('select count(id) as a from posts where author = ' .$id. ' and trangthai = 2');
         $posts = Post::with('huyen')->with('xa')->with('services')->with('images')
@@ -87,7 +88,7 @@ class UserController extends Controller
         $id=Auth::user()->id;
         // $posts = DB::select('select * from posts, images where author = ' .$id. ' and trangthai = 1 and posts.id = images.id_post');
         $id=Auth::user()->id;
-        $da_duyet = DB::select('select count(id) as a from posts where author = ' .$id. ' and trangthai = 1');
+        $da_duyet = DB::select('select count(id) as a from posts where author = ' .$id. ' and (trangthai = 1 or trangthai = 4)');
         $doi_duyet = DB::select('select count(id) as a from posts where author = ' .$id. ' and trangthai = 0');
         $tu_choi = DB::select('select count(id) as a from posts where author = ' .$id. ' and trangthai = 2');
         $posts = Post::with('huyen')->with('xa')->with('services')->with('images')
