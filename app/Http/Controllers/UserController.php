@@ -36,7 +36,7 @@ class UserController extends Controller
         if($password != '') {
             $password = $request->input('password');
             if($password != $request->input('password1')) {
-                return redirect()->back()->with('error', 'Confirm password not match');
+                return redirect()->back()->with('error', 'Nhập lại mật khẩu không chính xác');
             }
         } else {
             $password = Auth::user()->password;
