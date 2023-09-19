@@ -49,11 +49,11 @@ class LoginController extends Controller
 
         $new_posts = Post::where('trangthai','=','1')->with('huyen')->with('xa')->with('services')->with('images')->orderBy('created_at', 'desc')->paginate(8);
         $wishlist_posts = Post::where('trangthai','=','1')->with('huyen')->with('xa')->with('services')->with('images')->orderBy('luotquantam', 'desc')->paginate(6);
-        $tptn = DB::select('select count(id) as a from posts where id_dt = 1');
-        $tppy = DB::select('select count(id) as a from posts where id_dt = 8');
-        $tpsc = DB::select('select count(id) as a from posts where id_dt = 2');
-        $hpb = DB::select('select count(id) as a from posts where id_dt = 9');
-        $hdt = DB::select('select count(id) as a from posts where id_dt = 7');
+        $tptn = DB::select('select count(id) as a from posts where id_dt = 1 and trangthai = 1' );
+        $tppy = DB::select('select count(id) as a from posts where id_dt = 8 and trangthai = 1');
+        $tpsc = DB::select('select count(id) as a from posts where id_dt = 2 and trangthai = 1');
+        $hpb = DB::select('select count(id) as a from posts where id_dt = 9 and trangthai = 1');
+        $hdt = DB::select('select count(id) as a from posts where id_dt = 7 and trangthai = 1');
         return view('home', [
             'title' => "Trang chủ",
             'districts' => $districts,

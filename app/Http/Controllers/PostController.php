@@ -93,9 +93,9 @@ class PostController extends Controller
          $isLike = DB::select('Select count(*) as a From wishlists Where id_user = ' . Auth::user()->id .' and id_post = ' . $post->id)[0]->a;
          $user_wishlist = DB::select('select * from wishlists as w, users as u where w.id_user = u.id and w.id_post = ' . $post->id);
          $author_list_post = Post::where('author', '=', $post->author)->where('trangthai', '=', '1')->get();
-         $relate_post = Post::where('id_dt', '=', $post->id_dt)->where('id_w', '=', $post->id_w)->where('id','<>',$post->id)->paginate(5);
+         $relate_post = Post::where('id_dt', '=', $post->id_dt)->where('trangthai', '=', '1')->where('id_w', '=', $post->id_w)->where('id','<>',$post->id)->paginate(5);
          if(count($relate_post) < 2) {
-            $relate_post = Post::where('id_dt', '=', $post->id_dt)->where('id','<>',$post->id)->paginate(5);
+            $relate_post = Post::where('id_dt', '=', $post->id_dt)->where('trangthai', '=', '1')->where('id','<>',$post->id)->paginate(5);
          }
          return view('post.single', compact( 'title', 'isLike', 'user_wishlist', 'author_list_post', 'relate_post'), compact('post'));
      }
