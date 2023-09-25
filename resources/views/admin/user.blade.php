@@ -21,14 +21,16 @@
             @foreach ($users as $key => $user)
                 <tr>
                   <th scope="row">{{$key + 1}}</th>
-                  <td class="flex items-center">
-                    @if ($user->avatar != '')
+                  <td class="align-middle">
+                    <div class="flex items-center">
+                      @if ($user->avatar != '')
                         <img src="{{ $user->avatar }}" alt="" class="w-[30px] h-[30px] rounded-full mr-3 object-cover pointer-events-none">
-                    @else
-                        <img src="/template/imgs/avatar-default.png" alt="" class="w-[30px] h-[30px] rounded-full mr-3 object-cover pointer-events-none">
-                    @endif
-                    {{$user->name}}</td>
-                  <td>{{number_format($user->sodu)}} đ</td>
+                      @else
+                          <img src="/template/imgs/avatar-default.png" alt="" class="w-[30px] h-[30px] rounded-full mr-3 object-cover pointer-events-none">
+                      @endif
+                      {{$user->name}}</td>
+                    </div>
+                  <td class="align-middle">{{number_format($user->sodu)}} đ</td>
                   <td>
                     <div class="dropdown inline" style="display: inline">
                       <button class="btn btn-success dropdown-toggle" style="background-color: #28a745" type="button" data-bs-toggle="dropdown" aria-expanded="false">

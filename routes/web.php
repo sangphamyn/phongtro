@@ -36,12 +36,14 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [AdminController::class, 'index']);
         Route::post('/user/block', [AdminController::class, 'block']);
         Route::post('/user/topup', [AdminController::class, 'topUp']);
+        Route::get('/user/topup', [AdminController::class, 'topUp']);
         Route::get('/user/unblock', [AdminController::class, 'unblock']);
         Route::get('/user', [AdminController::class, 'getUser']);
         Route::get('/banned_user', [AdminController::class, 'getUserbanned']);
         Route::get('/post', [AdminController::class, 'getPost']);
         Route::get('/post/duyet', [AdminController::class, 'duyet']);
         Route::get('/post/tuchoi', [AdminController::class, 'tuchoi']);
+        Route::get('/naptien/list', [AdminController::class, 'naptienlist']);
     }
     );
 
@@ -54,6 +56,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/dadang', [UserController::class, 'dadang']);
         Route::get('/chuaduyet', [UserController::class, 'chuaduyet']);
         Route::get('/tuchoi', [UserController::class, 'tuchoi']);
+        Route::get('/naptien', [UserController::class, 'naptien']);
+        Route::get('/naptien/{bill}', [UserController::class, 'showbill']);
     }
     );
     Route::get('/profile', [UserController::class, 'index']);

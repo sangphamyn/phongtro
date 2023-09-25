@@ -43,4 +43,8 @@ class User extends Authenticatable
     public function banned() {
         return $this->hasOne(banned_acc::class, 'id_user', 'id');
     }
+    public function bills()
+    {
+        return $this->hasMany(Bill::class, 'id_user', 'id');
+    }
 }

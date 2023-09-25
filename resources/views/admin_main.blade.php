@@ -17,6 +17,49 @@
 		.collapse{
 			visibility: visible !important;
 		}
+		.button-5 {
+    align-items: center;
+    background-clip: padding-box;
+    background-color: #fa6400;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 1.25;
+    min-height: 3rem;
+    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    position: relative;
+    text-decoration: none;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: auto;
+  }
+  
+  .button-5:hover,
+  .button-5:focus {
+    background-color: #fb8332;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  }
+  
+  .button-5:hover {
+    transform: translateY(-1px);
+  }
+  
+  .button-5:active {
+    background-color: #c85000;
+    box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+    transform: translateY(0);
+  }
 	</style>
 	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 </head>
@@ -39,6 +82,14 @@
 					<li><a href="/admin/post?trangthai=1">Danh sách đã duyệt</a></li>
 					<li><a href="/admin/post?trangthai=0">Danh sách chưa duyệt</a></li>
 					<li><a href="/admin/post?trangthai=2">Danh sách từ chối</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Quản lý nạp tiền</a>
+				<ul class="collapse list-unstyled @if($active == 'qlnt') show @endif" id="homeSubmenu2">
+					<li><a href="/admin/naptien/list?trangthai=0">Danh sách nạp tiền</a></li>
+					<li><a href="/admin/naptien/list?trangthai=2">Danh sách đã nạp</a></li>
+					<li><a href="/admin/naptien/list?trangthai=1">Danh sách hết thời gian</a></li>
 				</ul>
 			</li>
 			<li>

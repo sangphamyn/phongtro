@@ -77,7 +77,7 @@
                 </div> 
                 @if (($post->trangthai)==0)
                     <a href="/admin/post/duyet?id={{ $post->id }}" class="button-5" style="background: #32be8f"> Duyệt </a>
-                    <a href="/admin/post/tuchoi?id={{ $post->id }}" class="button-5">Từ chối </a>
+                    <a href="/admin/post/tuchoi?id={{ $post->id }}&author={{$post->author}}" class="button-5">Từ chối </a>
                 @endif    
             </div>
         </div> 
