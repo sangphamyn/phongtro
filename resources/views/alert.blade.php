@@ -3,5 +3,5 @@
 @endif
 
 @if (Session::has('success'))
-    <span class="text-sm text-green-600">{{ Session::get('success') }}</span>
+    <span class="text-sm text-green-600" style="display: block; width: fit-content; margin: auto">{{ Session::get('success') }}</span>
 @endif

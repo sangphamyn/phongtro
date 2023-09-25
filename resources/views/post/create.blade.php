@@ -13,6 +13,7 @@
     <div class="w-[700px] mx-auto p-[50px]">
         <h2 class="register-title text-3xl font-semibold text-center">Tạo bài đăng</h2>
         <p class="text-center mb-5 text-gray-700 text-sm">Điền các trường dưới đây để tạo bài.</p>
+        @include('../alert')
         <form class="register-form bg-white border border-gray-300 p-10 rounded-md border-t-4 " method="POST" action="">
             <div class="mb-4">
                 <label for="title" class="text-sm font-medium mb-1 inline-block">Tiêu đề</label>
@@ -88,7 +89,7 @@
             {{ csrf_field() }}
             <input type="submit" name="signup" value="Đăng" class="btn-type-2 block px-7 py-2 cursor-pointer mx-auto text-white hover:text-white font-medium">
             <p class="italic">Phí đăng: 15,000 đ/bài</p>
-            @include('../alert')
+          
         </form>
     </div>
 </div>
