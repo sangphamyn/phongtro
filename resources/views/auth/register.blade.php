@@ -98,7 +98,7 @@
                         </div>
                         <div class="div">
                             <h5>Password</h5>
-                            <input type="password" class="input" name="password" required>
+                            <input type="password" class="input" name="password"  value="111111" required>
                         </div>
                     </div>
                     <span class="text-sm block text-left text-red-600">{{ $errors->first('password') }}</span>

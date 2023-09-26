@@ -14,11 +14,16 @@ use Illuminate\Support\Facades\DB;
 class AdminController extends Controller
 {
     public function index() {
-        if(Auth::user()->role == 1)
+        if(Auth::user()->role == 1) {
+            $tongtiennap = DB::select("SELECT SUM(sodu) as a FROM users")[0]->a;
+            $tongtiensudung = DB::select("SELECT COUNT(id) as a FROM posts WHERE trangthai = 1 OR trangthai = 0")[0]->a * 15000;
             return view('admin.index', [
                 'title' => 'Admin',
-                'active' => ''
+                'active' => '',
+                'tongtiennap' => $tongtiennap,
+                'tongtiensudung' => $tongtiensudung
             ]);
+        }
         return redirect('/');
     }
     public function getUser() {
