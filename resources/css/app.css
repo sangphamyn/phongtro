@@ -717,6 +717,12 @@ background-color:#f8f8f8;
 .box-naptien {
     transition: 0.25s;
 }
+.btn-naptien svg {
+    transition: 0.25s;
+}
+.btn-naptien:hover svg {
+    fill: #ffffff;
+}
 .hide {
     opacity: 0;
     visibility: hidden;
