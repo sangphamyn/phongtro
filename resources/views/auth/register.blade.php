@@ -52,7 +52,7 @@
                         </div>
                         <div class="div">
                             <h5>Số điện thoại</h5>
-                            <input type="text" class="input" name="phone"  value="{{ old('phone') }}" pattern="^[0-9\-\+]{9,15}$" required>
+                            <input type="text" class="input" name="phone" value="{{ old('phone') }}" pattern="^[0-9\-\+]{10,11}$" required>
                         </div>
                     </div>
                     <span class="text-sm block text-left text-red-600">{{ $errors->first('phone') }}</span>
@@ -62,7 +62,7 @@
                         </div>
                         <div class="div">
                             <h5>Mật khẩu</h5>
-                            <input type="password" class="input" name="password" required>
+                            <input type="password" class="input" name="password" minlength="6" maxlength="16" required>
                         </div>
                     </div>
                     <div class="input-div pass @if ($errors->has('password')) input-div-error @endif">
@@ -71,7 +71,7 @@
                         </div>
                         <div class="div">
                             <h5>Xác nhận mật khẩu</h5>
-                            <input type="password" class="input" name="password1" required>
+                            <input type="password" class="input" name="password1" minlength="6" maxlength="16" required>
                         </div>
                     </div>
                     <span class="text-sm block text-left text-red-600">{{ $errors->first('password') }}</span>
@@ -88,7 +88,7 @@
                         </div>
                         <div class="div">
                             <h5>Số điện thoại</h5>
-                            <input type="text" class="input" name="phone"  value="{{ old('phone') }}" pattern="^[0-9\-\+]{9,15}$" required>
+                            <input type="text" class="input" name="phone"  value="{{ old('phone') }}" pattern="^[0-9\-\+]{10,11}$" required>
                         </div>
                     </div>
                     <span class="text-sm block text-left text-red-600">{{ $errors->first('phone') }}</span>
@@ -98,7 +98,7 @@
                         </div>
                         <div class="div">
                             <h5>Password</h5>
-                            <input type="password" class="input" name="password" required>
+                            <input type="password" class="input" name="password" minlength="6" maxlength="16" required>
                         </div>
                     </div>
                     <span class="text-sm block text-left text-red-600">{{ $errors->first('password') }}</span>

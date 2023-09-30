@@ -710,3 +710,18 @@ background-color:#f8f8f8;
     visibility: visible;
     transform: translateY(50%,0);
 }
+.overlay {
+    background: rgba(0,0,0,0.3);
+    transition: 0.25s;
+}
+.box-naptien {
+    transition: 0.25s;
+}
+.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+.show {
+    opacity: 1;
+    visibility: visible;
+}

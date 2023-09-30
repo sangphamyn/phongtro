@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\banned_acc;
+use App\Models\Bill;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -59,6 +60,11 @@ class AdminController extends Controller
         if(Auth::check() && Auth::user()->role == 1) {
             $request->offsetUnset('_token');
             DB::select('UPDATE users SET sodu = sodu + '.$request->money.' WHERE id = ' . $request->id);
+            if($request->bill_id) {
+                $bill = Bill::find($request->bill_id);
+                $bill->trangthai = 1;
+                $bill->save();
+            }
             return redirect('/admin/user');
         } else {
             return redirect('/');
@@ -86,6 +92,7 @@ class AdminController extends Controller
         if(Auth::check() && Auth::user()->role == 1) {
             $request->offsetUnset('_token');
             DB::select('UPDATE posts SET trangthai = 2 WHERE id = ' . $request->id);
+            DB::select('UPDATE users SET sodu = sodu + 15000 WHERE id = ' . $request->author);
             return redirect('/admin/post?trangthai=2');
         } else {
             return redirect('/');
@@ -105,6 +112,23 @@ class AdminController extends Controller
         } else {
             return redirect('/');
         }
+    }
+
+    public function naptienlist(Request $request) {
+        $trangthai = $request->trangthai;
+        $datetimeThreshold = now()->subMinutes(10);
+        if($trangthai == 0)
+            $bills = Bill::with('author')->where('trangthai', '=', '0')->where('created_at', '>=', $datetimeThreshold)->get();
+        else if($trangthai == 1)
+            $bills = Bill::with('author')->where('trangthai', '=', '0')->where('created_at', '<', $datetimeThreshold)->get();
+        else if($trangthai == 2)
+            $bills = Bill::with('author')->where('trangthai', '=', '1')->get();
+        return view('admin.naptienlist', [
+            'title' => 'Danh sách đơn nạp',
+            'active' => 'qlnt',
+            'bills' => $bills,
+            'trangthai' => $trangthai
+        ]);
     }
 }
  

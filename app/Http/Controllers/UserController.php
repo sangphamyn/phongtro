@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bill;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Contracts\Database\Query\Builder;
@@ -104,6 +105,24 @@ class UserController extends Controller
             'dad' => $da_duyet[0]->a,
             'doid' => $doi_duyet[0]->a, 
             'tc' => $tu_choi[0]->a
+        ]);
+    }
+
+    public function naptien(Request $request) {
+        $sotien = $request->sotien;
+        if (!is_numeric($sotien) || !$sotien > 0 || !ctype_digit($sotien)) {
+            $sotien = 0;
+        }
+        $request->merge(["id_user"=>Auth::user()->id]);
+        $bill = Bill::create($request->all());
+        $bill_id = $bill->id;
+        return redirect('/profile/naptien/' . $bill_id);
+    }
+
+    public function showbill(Bill $bill) {
+        return view('profile.showbill', [
+            'title' => "Đơn nạp",
+            'bill' => $bill
         ]);
     }
 }
